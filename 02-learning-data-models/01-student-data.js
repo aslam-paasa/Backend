@@ -9,7 +9,7 @@ const app = express();
  * Import Mongoose:
 */
 const mongoose = require('mongoose');
-const Student = require('./01-student-data-model');
+const Student = require('./01-student-Schema');
 
 /**
  * Connecting database:

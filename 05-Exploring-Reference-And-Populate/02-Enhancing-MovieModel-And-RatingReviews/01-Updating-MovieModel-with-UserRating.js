@@ -3,10 +3,17 @@
  * */
 
 /**
- * 1. Update the Movie Model to include reviews field:
+ * 1. Update the Movie Model to include ratings & reviews field:
 */
 
 const movieSchema = new mongoose.Schema({
+    ratings: [
+        {
+            type: Number,
+            min: 0,
+            max: 10,
+        },
+    ],
     reviews: [
         {
             user: {
