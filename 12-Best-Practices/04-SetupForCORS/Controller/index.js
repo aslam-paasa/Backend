@@ -7,6 +7,50 @@
  *   2. Use CORS Middleware: In your app.js require and use the CORS
  *      middleware. Configure it to allow specific origins and HTTP
  *      methods.
+ * Note: CORS is applied by the browser, but our Postman is not browser.
+*/ 
+
+
+/**
+ * CORS Policy:
+ * - Avi tk humne jitne API hit kiye hai wo saare POSTMAN se kiya hai,
+ *   lekin jo real world application hai wo hm browser se hit krte hai.
+ * - Jb hm react pe iss api ko hit krte hai 'http://localhost:3000/login'
+ *   to humein error milta hai ki this API is blocked by CORS Policy, 
+ *   aur jb same API ko hm POSTMAN se hit krte hai to API sahi kaam kr
+ *   rha. Aisa q ho rha hai?
+ * - Basically hm apne humaara server(5000) ko hit kr rhe hai apne
+ *   browser(5173) se, aur error aa rha hai because of securiy reasons.
+ *   Hum Client se directly kisi Server ko hit ni kr skte, aur ye kuch
+ *   set of rules hote hai jisse hm CORS Policy kehte hai.
+ * - CORS Policy means humaari ek frontend application diff port pe chl 
+ *   rhi hai i.e. 5173, aur server ki application diff port pe chl rhi
+ *   hai i.e. 5000, and 5173 pe ek resource hai jo hit kr rhi hai 5000
+ *   ko. To jb 2 different port aapas m hit hoti hai to humaara 'server'
+ *   usse block kr deta hai.
+ * - So, jb v CORS Policy dikhe that means 2 different origin aapas m
+ *   hit ho rhe hai.
+ * 
+ * Q. How to resolve CORS policy?
+ *  - Issue server k end pe hai to hum apne server ko btate hai tm isse
+ *    allow kr do, ye trusted banda hai.
+ *  - Install CORS Package: npm i cors
+ * 
+ * 1. Allowing CORS for all origins:
+ * => app.use(cors());
+ * => app.get('/hello', (req, res) => {
+ *       res.send('hello');
+ *    });
+ * 
+ * 2. Allowing CORS for a single route:
+ * => app.get('/hello', cors(), (req, res) => {
+ *       res.send('hello');
+ *    });
+ * 
+ * 3. Allowing CORS for multiple origins:
+ * => Check below code
+ * 
+ * Note: Place the CORS at the top.
 */
 
 const express = require('express');
@@ -19,7 +63,22 @@ const { User } = require("./models/users.model");
 
 app.use(express.json());
 
+
+/**
+ * Allowing Multiple Origins:
+ * => If you want to allow multiple origins(or domains) to access your
+ *    backend API instead of all origins, you need to pass an options
+ *    object to the cors() fn.
+ * 
+ * => Now, we can only access website data from the two origins that
+ *    we added to the allowedOrigins array and all other origins are
+ *    blocked.
+ * 
+ * Note: Instead of URL, we can pass empty String, which means API
+ *       can come from anywhere.
+*/
 const allowedOrigins = ['<http://localhost:3000>', '<https://example.com>'];
+
 
 app.use(cors({
   origin: (origin, callback) => {
