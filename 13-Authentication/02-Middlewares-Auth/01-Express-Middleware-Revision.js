@@ -1,21 +1,22 @@
 /**
- * 1. Express Middleware revision
- * Create an API/user and return
- *    a. name
- *    b. age
- *    c. pincode
+ * Express Middleware revision
+ * - Create an API /user and return:
+ *   a. name
+ *   b. age
+ *   c. pincode
  * 
- * a. Write a middleware which logs everytime this API is being 
+ * 1. Write a middleware which logs everytime this API is being 
  *    accessed.
- * 
- * b. Access this API using Postman.
+ * 2. Access this API using Postman.
  * */
 
 
 const express = require('express');
-
 const app = express();
 
+/**
+ * Logger Middleware:
+*/
 function userLogger(req, res, next) {
     console.log("logger called")
     if (true) {

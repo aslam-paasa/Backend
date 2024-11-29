@@ -17,11 +17,12 @@ const bcrypt = require('bcrypt');
 /**
  * API Routes
 */
-app.post('/signup', async (req, res) => {
+app.post('/login', async (req, res) => {
     const { username, password } = req.body;
 
     /**
      * Checks if the username is already taken
+     * - db stored password == req coming from server
     */
     const user = users.find((user) => user.username === username);
 

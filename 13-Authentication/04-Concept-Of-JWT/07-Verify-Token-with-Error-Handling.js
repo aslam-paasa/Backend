@@ -1,7 +1,7 @@
 /**
  * Q. Verify a token with error handling, specifically handling the
  *    case where the token is incorrect or has expired.
- * */ 
+ * */
 
 /**
  * Explanation:
@@ -11,3 +11,10 @@
  *    thrown, and it's caught by the catch block, which prints an error
  *    message.
 */
+
+try {
+    const decoded = jwt.verify({ token, secret });
+    console.log({ decoded });
+} catch (error) { 
+    console.error("Token verification failed: " + error); 
+}

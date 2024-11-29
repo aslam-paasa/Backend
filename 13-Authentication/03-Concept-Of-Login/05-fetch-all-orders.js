@@ -38,23 +38,7 @@ app.get('/cart', authVerify, (req, res) => {
 
 app.use(express.json());
 
-const users = [
-    {
-        username: 'user1',
-        password: 'password1',
-        orders: [
-            { id: 1, product: 'Product A', quantity: 2 },
-            { id: 2, product: 'Product B', quantity: 1 },
-        ],
-    },
-    {
-        username: 'admin1',
-        password: 'adminpassword1',
-        orders: [
-            { id: 3, product: 'Product C', quantity: 3 },
-        ],
-    },
-];
+ 
 
 app.post('/signup', async (req, res) => {
     const { username, password } = req.body;

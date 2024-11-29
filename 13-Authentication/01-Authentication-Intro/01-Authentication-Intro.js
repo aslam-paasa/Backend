@@ -76,7 +76,7 @@
  *    c. We have a magical token which can only be decoded by the server
  *       and no one else.
  *       - Server can put the userID also in the token before locking/
- *         signing /hashing it.
+ *         signing/hashing it.
  *    d. Next time when you want confidential information, send this token
  *       with it. Client has to store it for future requests.
  *    e. Since the token is stateless and contains all the necessary
@@ -90,4 +90,10 @@
  * => You have to check "/orders/:userId, whether 
  *    req.params.userId === req.token.decoded.userId
  * 
+ * Note: When we download or install any malicious software in our machine,
+ *       it download all our cookies and sends it to someone else. And
+ *       this is how hacker got access to our machine, because all our
+ *       locks are stored in the browser. Even if we don't share our
+ *       password, our cookies will give 24x7hr access. This is how
+ *       hacking happens.
 */

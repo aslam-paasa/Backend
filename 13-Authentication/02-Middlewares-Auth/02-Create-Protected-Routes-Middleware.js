@@ -5,7 +5,7 @@
  *    2. Log the token
  *    3. Apply the middleware to the /user route. 
  *    4. Now, send some requests through Postman to check this
-     *    5. Let's do an if/else 
+ *    5. Let's do an if/else 
  *       a. If header is there we let it pass to the route.
  *       b. Else we send a 401 error
  *       c. Test this with Postman

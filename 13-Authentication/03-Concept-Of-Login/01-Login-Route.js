@@ -22,6 +22,25 @@
  *       message that the user is found.
  *    b. If not, then send them a 401 response.
  * 3. Test this from the frontend by making Postman call.
+ * 
+ * Note: Everything is same as previous module. The only thing new is
+ *       we are returning the token.
+*/
+
+/**
+ * Understanding:
+ * 1. This is what you'll do for each user. Just that instead of looking
+ *    up an array you would do it from the database.
+ * 2. Pay attention that we can login, and username-password pair only
+ *    once. Later, we use only the token to authenticate the user.
+ *    a. This way you don't send credentials in every request.
+ *    b. Also, it saves from for each request as you dn't need to do an
+ *       extra query to DB per request.
+ * 3. Another thing to notice is that there's no logout. Since there's
+ *    no token saved on server, server can't log out. Expiry of your token
+ *    is logout.
+ *    a. Therefore, JWT works best on HTTPS. If you're not using HTTPs
+ *       on your site in 2021 then you have bigger issues.
 */
 
 
@@ -65,18 +84,3 @@ app.listen(3000, () => {
 });
 
 
-/**
- * Understanding:
- * 1. This is what you'll do for each user. Just that instead of looking
- *    up an array you would do it from the database.
- * 2. Pay attention that we can login, and username-password pair only
- *    once. Later, we use only the token to authenticate the user.
- *    a. This way you don't send credentials in every request.
- *    b. Also, it saves from for each request as you dn't need to do an
- *       extra query to DB per request.
- * 3. Another thing to notice is that there's no logout. Since there's
- *    no token saved on server, server can't log out. Expiry of your token
- *    is logout.
- *    a. Therefore, JWT works best on HTTPS. If you're not using HTTPs
- *       on your site in 2021 then you have bigger issues.
-*/
