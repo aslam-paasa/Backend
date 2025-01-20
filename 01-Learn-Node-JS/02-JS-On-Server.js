@@ -18,7 +18,7 @@
  * - These JS Engines are build differently but the all follow the
  *   same standard/rules. So, every browser will give same answer.
  * - And because of the ECMAScript standards, V8 engine cannot go
- *   beyond the standard. That is why NodeJS gives some extra super
+ *   beyond that standard. That is why NodeJS gives some extra super
  *   power on top of V8.
  * - We can assume these super powers as APIs on server. For example,
  *   suppose we want to connect to database but V8 cannot connect to
