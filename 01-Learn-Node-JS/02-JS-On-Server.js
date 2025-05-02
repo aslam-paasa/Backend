@@ -122,10 +122,12 @@ console.log(a + b);
  *   So, it is not part of V8 Engine, but Browser.
  * 
  * - Similarly, NodeJS also return a global object, but it is not
- *   known as 'window'. It is known as 'global'.
+ *   known as 'window'. It is known as 'global', which is equivalent
+ *   to the 'window' object in the browser.
  * - And if we just console our global object in VSCode terminal, it
  *   will return the global object.
- * - And if we look at the object, we can see:
+ * - And if we look at the object, we can see various functionalities
+ *   such as:
  *   a. setTimeout
  *   b. clearTimeout
  *   c. setInterval
@@ -144,5 +146,27 @@ console.log(a + b);
  *   not V8 Engine.
  * 
  * Note: When we do console.log(this) in our NodeJS. It doesn't return
- *       global object. It prints an empty object.
+ *       global object. It prints an empty object, indicating that this
+ *       does not refer to the global object in this context.
 */
+
+console.log(this); // empty object
+
+
+/**
+ * Global this:
+ * - globalThis, is always a global object, regardless of where it is
+ *   accessed.
+ * - It was introduced in ECMAScript 2020 to provide a standardized
+ *   way to refer to the global object in ant environment(browsers, 
+ *   Node.hjs, etc)
+ *   a. In browsers, global is equivalent to window.
+ *   b. In Node.js, globalThis is equivalent to global.
+ *   c. It provides a consistent way to access the global object without
+ *      worrying about the environment.
+*/
+
+console.log(globalThis); // global object
+
+console.log(globalThis === global); // true
+
